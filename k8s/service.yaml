@@ -1,0 +1,17 @@
+apiVersion: v1
+kind: Service
+metadata:
+  name: nodeserver-service
+  labels:
+    app: nodeserver-service
+spec:
+  selector:
+    app: nodeserver
+
+  type: ClusterIP # Generate an internal IP
+  ports:
+    - name: nodeserver-service
+      port: 3001 # port of service
+      # When "targetPort" isn't explicit, "port" is considered 
+      targetPort: 3000 # port of container is running. 
+      protocol: TCP
